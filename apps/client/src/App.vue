@@ -2,6 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    {{ a }}
   </div>
 </template>
 
@@ -9,12 +10,26 @@
 import Vue from 'vue';
 import HelloWorld from './components/HelloWorld.vue';
 
-export default Vue.extend({
-  name: 'App',
+const VueComponent = Vue.extend({
+  data() {
+    return {};
+  },
   components: {
     HelloWorld,
   },
+  computed: {
+    b(): string {
+      this;
+      return '123';
+    },
+  },
+  methods: {
+    a(this: App): string {
+      return this.b;
+    },
+  },
 });
+export default class App extends VueComponent {}
 </script>
 
 <style lang="scss">

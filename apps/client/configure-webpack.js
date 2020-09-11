@@ -13,4 +13,6 @@
  *
  * https://cli.vuejs.org/config/#configurewebpack
  */
-module.exports = (config) => {};
+module.exports = (config) => {
+  console.log(config)
+};

@@ -14,9 +14,7 @@
             "outputPath": "dist/apps/server-backend",
             "main": "apps/server-backend/src/main.ts",
             "tsConfig": "apps/server-backend/tsconfig.app.json",
-            "assets": [
-              "apps/server-backend/src/assets"
-            ]
+            "assets": ["apps/server-backend/src/assets"]
           },
           "configurations": {
             "production": {
@@ -46,10 +44,7 @@
               "apps/server-backend/tsconfig.app.json",
               "apps/server-backend/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/server-backend/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/server-backend/**/*"]
           }
         },
         "test": {
@@ -106,10 +101,7 @@
               "apps/admin/tsconfig.app.json",
               "apps/admin/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/admin/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/admin/**/*"]
           }
         },
         "test": {
@@ -144,13 +136,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "apps/admin-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/admin-e2e/**/*"
-            ]
+            "tsConfig": ["apps/admin-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/admin-e2e/**/*"]
           }
         }
       }
@@ -166,7 +153,8 @@
             "dest": "dist/apps/client",
             "index": "apps/client/public/index.html",
             "main": "apps/client/src/main.ts",
-            "tsConfig": "apps/client/tsconfig.app.json"
+            "tsConfig": "apps/client/tsconfig.app.json",
+            "publicPath": "./"
           },
           "configurations": {
             "production": {
@@ -177,17 +165,25 @@
                 "extract": true,
                 "sourceMap": false
               }
+            },
+            "development": {
+              "mode": "development"
             }
           }
         },
         "serve": {
           "builder": "@nx-plus/vue:dev-server",
           "options": {
-            "browserTarget": "client:build"
+            "browserTarget": "client:build",
+            "publicPath": "./"
           },
           "configurations": {
             "production": {
+              "mode": "production",
               "browserTarget": "client:build:production"
+            },
+            "development": {
+              "mode": "development"
             }
           }
         },
@@ -199,10 +195,7 @@
               "apps/client/tsconfig.app.json",
               "apps/client/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/client/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/client/**/*"]
           }
         },
         "test": {
@@ -237,13 +230,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "apps/client-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/client-e2e/**/*"
-            ]
+            "tsConfig": ["apps/client-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/client-e2e/**/*"]
           }
         }
       }
@@ -261,9 +249,7 @@
             "outputPath": "dist/apps/client-electron",
             "main": "apps/client-electron/src/main.ts",
             "tsConfig": "apps/client-electron/tsconfig.app.json",
-            "assets": [
-              "apps/client-electron/src/assets"
-            ]
+            "assets": ["apps/client-electron/src/assets"]
           },
           "configurations": {
             "production": {
@@ -309,164 +295,7 @@
               "apps/client-electron/tsconfig.app.json",
               "apps/client-electron/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/client-electron/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/client-electron/jest.config.js",
-            "tsConfig": "apps/client-electron/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "apps-client-electron": {
-      "root": "apps/apps/client-electron",
-      "sourceRoot": "apps/apps/client-electron/src",
-      "projectType": "application",
-      "prefix": "apps-client-electron",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "nx-electron:build",
-          "options": {
-            "outputPath": "dist/apps/apps/client-electron",
-            "main": "apps/apps/client-electron/src/main.ts",
-            "tsConfig": "apps/apps/client-electron/tsconfig.app.json",
-            "assets": [
-              "apps/apps/client-electron/src/assets"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/apps/client-electron/src/environments/environment.ts",
-                  "with": "apps/apps/client-electron/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "nx-electron:execute",
-          "options": {
-            "buildTarget": "apps-client-electron:build"
-          }
-        },
-        "package": {
-          "builder": "nx-electron:package",
-          "options": {
-            "name": "apps-client-electron",
-            "frontendProject": "client",
-            "out": "dist/packages"
-          }
-        },
-        "make": {
-          "builder": "nx-electron:make",
-          "options": {
-            "name": "apps-client-electron",
-            "frontendProject": "client",
-            "out": "dist/executables"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "apps/apps/client-electron/tsconfig.app.json",
-              "apps/apps/client-electron/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/apps/client-electron/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/apps/client-electron/jest.config.js",
-            "tsConfig": "apps/apps/client-electron/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    ".-client-electron": {
-      "root": "apps/client-electron",
-      "sourceRoot": "apps/client-electron/src",
-      "projectType": "application",
-      "prefix": ".-client-electron",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "nx-electron:build",
-          "options": {
-            "outputPath": "dist/apps/client-electron",
-            "main": "apps/client-electron/src/main.ts",
-            "tsConfig": "apps/client-electron/tsconfig.app.json",
-            "assets": [
-              "apps/client-electron/src/assets"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/client-electron/src/environments/environment.ts",
-                  "with": "apps/client-electron/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "nx-electron:execute",
-          "options": {
-            "buildTarget": ".-client-electron:build"
-          }
-        },
-        "package": {
-          "builder": "nx-electron:package",
-          "options": {
-            "name": ".-client-electron",
-            "frontendProject": "client",
-            "out": "dist/packages"
-          }
-        },
-        "make": {
-          "builder": "nx-electron:make",
-          "options": {
-            "name": ".-client-electron",
-            "frontendProject": "client",
-            "out": "dist/executables"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "apps/client-electron/tsconfig.app.json",
-              "apps/client-electron/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/client-electron/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/client-electron/**/*"]
           }
         },
         "test": {

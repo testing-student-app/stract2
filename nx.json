@@ -42,12 +42,6 @@
     "client-electron": {
       "tags": [],
       "implicitDependencies": ["client"]
-    },
-    "apps-client-electron": {
-      "tags": []
-    },
-    ".-client-electron": {
-      "tags": []
     }
   }
 }
