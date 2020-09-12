@@ -1,0 +1,4 @@
+{
+  "$schema": "../../../../../libs/electron/src/validation/maker.schema.json",
+  "productName": "stract2-admin"
+}

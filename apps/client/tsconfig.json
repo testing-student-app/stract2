@@ -6,8 +6,8 @@
     "allowSyntheticDefaultImports": true,
     "types": ["webpack-env", "node"]
   },
-  "include": [],
   "files": [],
+  "include": [],
   "references": [
     {
       "path": "./tsconfig.app.json"

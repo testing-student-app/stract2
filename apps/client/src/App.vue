@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <HelloWorld msg="Welcome to Your Client App" />
     {{ a }}
   </div>
 </template>
@@ -19,17 +19,17 @@ const VueComponent = Vue.extend({
   },
   computed: {
     b(): string {
-      this;
       return '123';
-    },
+    }
   },
   methods: {
-    a(this: App): string {
+    a(): string {
       return this.b;
-    },
-  },
+    }
+  }
 });
-export default class App extends VueComponent {}
+export default class App extends VueComponent {
+}
 </script>
 
 <style lang="scss">

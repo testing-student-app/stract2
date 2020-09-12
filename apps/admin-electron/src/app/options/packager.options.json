@@ -1,0 +1,3 @@
+{
+    "$schema": "../../../../../libs/electron/src/validation/packager.schema.json"
+}

@@ -14,7 +14,9 @@
             "outputPath": "dist/apps/server-backend",
             "main": "apps/server-backend/src/main.ts",
             "tsConfig": "apps/server-backend/tsconfig.app.json",
-            "assets": ["apps/server-backend/src/assets"]
+            "assets": [
+              "apps/server-backend/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -44,7 +46,10 @@
               "apps/server-backend/tsconfig.app.json",
               "apps/server-backend/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/server-backend/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/server-backend/**/*"
+            ]
           }
         },
         "test": {
@@ -68,7 +73,8 @@
             "dest": "dist/apps/admin",
             "index": "apps/admin/public/index.html",
             "main": "apps/admin/src/main.ts",
-            "tsConfig": "apps/admin/tsconfig.app.json"
+            "tsConfig": "apps/admin/tsconfig.app.json",
+            "publicPath": "./"
           },
           "configurations": {
             "production": {
@@ -85,7 +91,8 @@
         "serve": {
           "builder": "./dist/libs/vue:dev-server",
           "options": {
-            "browserTarget": "admin:build"
+            "browserTarget": "admin:build",
+            "port": 8081
           },
           "configurations": {
             "production": {
@@ -101,7 +108,10 @@
               "apps/admin/tsconfig.app.json",
               "apps/admin/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/admin/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/admin/**/*"
+            ]
           }
         },
         "test": {
@@ -136,8 +146,13 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": ["apps/admin-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/admin-e2e/**/*"]
+            "tsConfig": [
+              "apps/admin-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/admin-e2e/**/*"
+            ]
           }
         }
       }
@@ -174,7 +189,8 @@
         "serve": {
           "builder": "./dist/libs/vue:dev-server",
           "options": {
-            "browserTarget": "client:build"
+            "browserTarget": "client:build",
+            "port": 8080
           },
           "configurations": {
             "production": {
@@ -194,7 +210,10 @@
               "apps/client/tsconfig.app.json",
               "apps/client/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/client/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/client/**/*"
+            ]
           }
         },
         "test": {
@@ -229,8 +248,13 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": ["apps/client-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/client-e2e/**/*"]
+            "tsConfig": [
+              "apps/client-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/client-e2e/**/*"
+            ]
           }
         }
       }
@@ -248,7 +272,9 @@
             "outputPath": "dist/apps/client-electron",
             "main": "apps/client-electron/src/main.ts",
             "tsConfig": "apps/client-electron/tsconfig.app.json",
-            "assets": ["apps/client-electron/src/assets"]
+            "assets": [
+              "apps/client-electron/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -294,7 +320,10 @@
               "apps/client-electron/tsconfig.app.json",
               "apps/client-electron/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/client-electron/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/client-electron/**/*"
+            ]
           }
         },
         "test": {
@@ -321,7 +350,10 @@
               "libs/vue/tsconfig.lib.json",
               "libs/vue/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/vue/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/vue/**/*"
+            ]
           }
         },
         "test": {
@@ -402,7 +434,10 @@
               "libs/electron/tsconfig.lib.json",
               "libs/electron/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/electron/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/electron/**/*"
+            ]
           }
         },
         "test": {
@@ -443,6 +478,83 @@
                 "output": "."
               }
             ]
+          }
+        }
+      }
+    },
+    "admin-electron": {
+      "root": "apps/admin-electron",
+      "sourceRoot": "apps/admin-electron/src",
+      "projectType": "application",
+      "prefix": "admin-electron",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "./dist/libs/electron:build",
+          "options": {
+            "outputPath": "dist/apps/admin-electron",
+            "main": "apps/admin-electron/src/main.ts",
+            "tsConfig": "apps/admin-electron/tsconfig.app.json",
+            "assets": [
+              "apps/admin-electron/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/admin-electron/src/environments/environment.ts",
+                  "with": "apps/admin-electron/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "./dist/libs/electron:execute",
+          "options": {
+            "buildTarget": "admin-electron:build"
+          }
+        },
+        "package": {
+          "builder": "./dist/libs/electron:package",
+          "options": {
+            "name": "admin-electron",
+            "frontendProject": "admin",
+            "out": "dist/packages"
+          }
+        },
+        "make": {
+          "builder": "./dist/libs/electron:make",
+          "options": {
+            "name": "admin-electron",
+            "frontendProject": "admin",
+            "out": "dist/executables"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/admin-electron/tsconfig.app.json",
+              "apps/admin-electron/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/admin-electron/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/admin-electron/jest.config.js",
+            "tsConfig": "apps/admin-electron/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
