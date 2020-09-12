@@ -42,6 +42,16 @@
     "client-electron": {
       "tags": [],
       "implicitDependencies": ["client"]
+    },
+    "vue": {
+      "tags": []
+    },
+    "vue-e2e": {
+      "tags": [],
+      "implicitDependencies": ["vue"]
+    },
+    "electron": {
+      "tags": []
     }
   }
 }

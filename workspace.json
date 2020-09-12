@@ -63,7 +63,7 @@
       "sourceRoot": "apps/admin/src",
       "architect": {
         "build": {
-          "builder": "@nx-plus/vue:browser",
+          "builder": "./dist/libs/vue:browser",
           "options": {
             "dest": "dist/apps/admin",
             "index": "apps/admin/public/index.html",
@@ -83,7 +83,7 @@
           }
         },
         "serve": {
-          "builder": "@nx-plus/vue:dev-server",
+          "builder": "./dist/libs/vue:dev-server",
           "options": {
             "browserTarget": "admin:build"
           },
@@ -148,7 +148,7 @@
       "sourceRoot": "apps/client/src",
       "architect": {
         "build": {
-          "builder": "@nx-plus/vue:browser",
+          "builder": "./dist/libs/vue:browser",
           "options": {
             "dest": "dist/apps/client",
             "index": "apps/client/public/index.html",
@@ -172,10 +172,9 @@
           }
         },
         "serve": {
-          "builder": "@nx-plus/vue:dev-server",
+          "builder": "./dist/libs/vue:dev-server",
           "options": {
-            "browserTarget": "client:build",
-            "publicPath": "./"
+            "browserTarget": "client:build"
           },
           "configurations": {
             "production": {
@@ -244,7 +243,7 @@
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "nx-electron:build",
+          "builder": "./dist/libs/electron:build",
           "options": {
             "outputPath": "dist/apps/client-electron",
             "main": "apps/client-electron/src/main.ts",
@@ -266,13 +265,13 @@
           }
         },
         "serve": {
-          "builder": "nx-electron:execute",
+          "builder": "./dist/libs/electron:execute",
           "options": {
             "buildTarget": "client-electron:build"
           }
         },
         "package": {
-          "builder": "nx-electron:package",
+          "builder": "./dist/libs/electron:package",
           "options": {
             "name": "client-electron",
             "frontendProject": "client",
@@ -280,7 +279,7 @@
           }
         },
         "make": {
-          "builder": "nx-electron:make",
+          "builder": "./dist/libs/electron:make",
           "options": {
             "name": "client-electron",
             "frontendProject": "client",
@@ -307,10 +306,206 @@
           }
         }
       }
+    },
+    "vue": {
+      "root": "libs/vue",
+      "sourceRoot": "libs/vue/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/vue/tsconfig.lib.json",
+              "libs/vue/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/vue/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/vue/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/vue",
+            "tsConfig": "libs/vue/tsconfig.lib.json",
+            "packageJson": "libs/vue/package.json",
+            "main": "libs/vue/src/index.ts",
+            "assets": [
+              "libs/vue/*.md",
+              {
+                "input": "./libs/vue/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/vue",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/vue",
+                "glob": "builders.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/vue",
+                "glob": "patch-nx-dep-graph.js",
+                "output": "."
+              },
+              {
+                "input": "./libs/vue",
+                "glob": "migrations.json",
+                "output": "."
+              }
+            ],
+            "srcRootForCompilationRoot": "libs/vue"
+          }
+        }
+      }
+    },
+    "vue-e2e": {
+      "projectType": "application",
+      "root": "apps/vue-e2e",
+      "sourceRoot": "apps/vue-e2e/src",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "vue:build",
+            "npmPackageName": "@stract2/vue",
+            "pluginOutputPath": "dist/libs/vue",
+            "jestConfig": "apps/vue-e2e/jest.config.js",
+            "tsSpecConfig": "apps/vue-e2e/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "electron": {
+      "root": "libs/electron",
+      "sourceRoot": "libs/electron/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/electron/tsconfig.lib.json",
+              "libs/electron/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/electron/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/electron/jest.config.js",
+            "tsConfig": "libs/electron/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/electron",
+            "tsConfig": "libs/electron/tsconfig.lib.json",
+            "packageJson": "libs/electron/package.json",
+            "main": "libs/electron/src/index.ts",
+            "assets": [
+              "libs/electron/*.md",
+              {
+                "input": "./libs/electron/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/electron",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/electron",
+                "glob": "builders.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/electron",
+                "glob": "migrations.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {
     "defaultCollection": "@nrwl/nest"
   },
-  "defaultProject": "server-backend"
+  "defaultProject": "server-backend",
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/react": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/web": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nx-plugin": {
+      "plugin": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    }
+  }
 }
