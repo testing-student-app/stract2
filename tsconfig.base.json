@@ -15,7 +15,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@stract2/utils": ["libs/utils/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

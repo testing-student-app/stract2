@@ -206,7 +206,7 @@ function run(
         serialHooks([
           (buildPath, electronVersion, platform, arch) => {
             return writeFileAsync(
-              join(buildPath, 'index.js'),
+              join(buildPath, 'index.ts'),
               `const Main = require('./dist/apps/${options.name}/main');`
             );
           },

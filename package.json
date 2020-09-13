@@ -35,9 +35,14 @@
     "@nestjs/common": "^7.0.0",
     "@nestjs/core": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
+    "bootstrap": "^4.5.2",
+    "bootstrap-vue": "^2.16.0",
+    "nanoid": "^3.1.12",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-router": "^3.4.3",
+    "vuex": "^3.5.1"
   },
   "devDependencies": {
     "@angular-devkit/architect": "0.1000.7",

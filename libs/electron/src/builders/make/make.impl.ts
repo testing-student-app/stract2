@@ -53,7 +53,7 @@ export interface MakeElectronBuilderOutput extends BuilderOutput {
 
 async function beforeBuild(appDir: string, appName: string) {
   await writeFileAsync(
-    join(appDir, 'dist', 'apps', appName, 'index.js'),
+    join(appDir, 'dist', 'apps', appName, 'index.ts'),
     `const Main = require('./${appName}/main.js');`
   );
 }
@@ -129,7 +129,7 @@ function _createBaseConfig(
       {
         from: `./dist/apps/${options.name}`,
         to: '',
-        filter: ['index.js'],
+        filter: ['index.ts'],
       },
       './package.json',
       '!(**/*.+(js|css).map)',
