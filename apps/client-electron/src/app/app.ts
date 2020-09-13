@@ -40,13 +40,16 @@ export default class App {
     }
   }
 
+  private static installDevtools() {
+    if (App.isDevelopmentMode()) {
+      BrowserWindow.addDevToolsExtension('node_modules/vue-devtools/vender');
+    }
+  }
+
   private static onReady() {
     // This method will be called when Electron has finished
     // initialization and is ready to create browser windows.
     // Some APIs can only be used after this event occurs.
-    if (App.isDevelopmentMode()) {
-      BrowserWindow.addDevToolsExtension('node_modules/vue-devtools/vender');
-    }
     App.initMainWindow();
     App.loadMainWindow();
   }
@@ -121,7 +124,8 @@ export default class App {
     App.application = app;
 
     App.application.on('window-all-closed', App.onWindowAllClosed); // Quit when all windows are closed.
-    App.application.on('ready', App.onReady); // App is ready to load data
+    App.application.prependOnceListener('ready', App.onReady); // App is ready to load data
+    App.application.once('ready', App.installDevtools); // App is ready to load data
     App.application.on('activate', App.onActivate); // App is activated
   }
 }
