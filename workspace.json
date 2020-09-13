@@ -47,10 +47,7 @@
               "apps/admin/tsconfig.app.json",
               "apps/admin/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/admin/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/admin/**/*"]
           }
         },
         "test": {
@@ -85,13 +82,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "apps/admin-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/admin-e2e/**/*"
-            ]
+            "tsConfig": ["apps/admin-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/admin-e2e/**/*"]
           }
         }
       }
@@ -149,10 +141,7 @@
               "apps/client/tsconfig.app.json",
               "apps/client/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/client/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/client/**/*"]
           }
         },
         "test": {
@@ -187,13 +176,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "apps/client-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/client-e2e/**/*"
-            ]
+            "tsConfig": ["apps/client-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/client-e2e/**/*"]
           }
         }
       }
@@ -211,9 +195,7 @@
             "outputPath": "dist/apps/client-electron",
             "main": "apps/client-electron/src/main.ts",
             "tsConfig": "apps/client-electron/tsconfig.app.json",
-            "assets": [
-              "apps/client-electron/src/assets"
-            ]
+            "assets": ["apps/client-electron/src/assets"]
           },
           "configurations": {
             "production": {
@@ -259,10 +241,7 @@
               "apps/client-electron/tsconfig.app.json",
               "apps/client-electron/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/client-electron/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/client-electron/**/*"]
           }
         },
         "test": {
@@ -289,10 +268,7 @@
               "libs/vue/tsconfig.lib.json",
               "libs/vue/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/vue/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/vue/**/*"]
           }
         },
         "test": {
@@ -373,10 +349,7 @@
               "libs/electron/tsconfig.lib.json",
               "libs/electron/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/electron/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/electron/**/*"]
           }
         },
         "test": {
@@ -434,9 +407,7 @@
             "outputPath": "dist/apps/admin-electron",
             "main": "apps/admin-electron/src/main.ts",
             "tsConfig": "apps/admin-electron/tsconfig.app.json",
-            "assets": [
-              "apps/admin-electron/src/assets"
-            ]
+            "assets": ["apps/admin-electron/src/assets"]
           },
           "configurations": {
             "production": {
@@ -482,10 +453,7 @@
               "apps/admin-electron/tsconfig.app.json",
               "apps/admin-electron/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/admin-electron/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/admin-electron/**/*"]
           }
         },
         "test": {
@@ -512,10 +480,7 @@
               "libs/utils/tsconfig.lib.json",
               "libs/utils/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/utils/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/utils/**/*"]
           }
         },
         "test": {
@@ -541,9 +506,7 @@
             "outputPath": "dist/apps/main-server",
             "main": "apps/main-server/src/main.ts",
             "tsConfig": "apps/main-server/tsconfig.app.json",
-            "assets": [
-              "apps/main-server/src/assets"
-            ]
+            "assets": ["apps/main-server/src/assets"]
           },
           "configurations": {
             "production": {
@@ -573,10 +536,7 @@
               "apps/main-server/tsconfig.app.json",
               "apps/main-server/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/main-server/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/main-server/**/*"]
           }
         },
         "test": {
@@ -588,6 +548,35 @@
           }
         }
       }
+    },
+    "vue-shared-components": {
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/vue-shared-components/tsconfig.lib.json",
+              "libs/vue-shared-components/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/vue-shared-components/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/vue-shared-components/jest.config.js",
+            "tsConfig": "libs/vue-shared-components/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "root": "libs/vue-shared-components",
+      "sourceRoot": "libs/vue-shared-components/src"
     }
   },
   "cli": {

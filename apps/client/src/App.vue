@@ -11,21 +11,22 @@
 <script lang="ts">
 import Vue from 'vue';
 import NavBar from './components/NavBar.vue';
+import { loguxMixin } from '@logux/vuex';
 
 export default Vue.extend({
   name: 'App',
-
+  mixins: [loguxMixin],
   components: {
     NavBar,
   },
 
-  computed: {},
+  computed: {
+    channels() {
+      return ['tests'];
+    },
+  },
 
   watch: {},
-
-  mounted() {
-    this.$ws.connect(`ws://127.0.0.1:port/ws/c`);
-  },
 
   beforeCreate() {
     // tauri.listen('state', ({ payload: state }) => {

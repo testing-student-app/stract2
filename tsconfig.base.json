@@ -16,7 +16,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@stract2/utils": ["libs/utils/src/index.ts"]
+      "@stract2/utils": ["libs/utils/src/index.ts"],
+      "@stract2/vue-shared-components": [
+        "libs/vue-shared-components/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,24 +1,6 @@
 <template>
   <b-navbar variant="dark">
-    <b-navbar-brand>
-      <b-badge
-        v-if="serverStatus === 'connected'"
-        variant="success"
-        class="text-wrap"
-      >
-        Connected, server running
-      </b-badge>
-      <b-badge
-        v-else-if="serverStatus === 'started'"
-        variant="warning"
-        class="text-wrap"
-      >
-        Not connected, server running
-      </b-badge>
-      <b-badge v-else variant="danger" class="text-wrap">
-        Not connected, server not running
-      </b-badge>
-    </b-navbar-brand>
+    <ConnectedBadge :channels="['admin']" />
 
     <b-navbar-nav class="ml-auto">
       <b-button-toolbar
@@ -46,12 +28,14 @@ import Vue from 'vue';
 import { mapActions } from 'vuex';
 import NewQuestionModal from './NewQuestionModal.vue';
 import { customMapState } from '@stract2/utils';
+import { ConnectedBadge } from '@stract2/vue-shared-components';
 
 export default Vue.extend({
   name: 'NavBar',
 
   components: {
     NewQuestionModal,
+    ConnectedBadge,
   },
 
   computed: {

@@ -27,7 +27,7 @@ export default Vue.extend({
   },
   methods: {
     ok() {
-      this.$ws.emit('setname', { name: this.name });
+      this.$store.commit.sync({type: 'users/change_name', name: this.name})
     },
   },
 });
