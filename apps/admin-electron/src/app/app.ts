@@ -72,8 +72,6 @@ export default class App {
         backgroundThrottling: false,
       },
     });
-    App.mainWindow.setMenu(null);
-    App.mainWindow.center();
 
     // if main window is ready to show, close the splash window and show the main window
     App.mainWindow.once('ready-to-show', () => {
