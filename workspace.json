@@ -1,62 +1,6 @@
 {
   "version": 1,
   "projects": {
-    "server-backend": {
-      "root": "apps/server-backend",
-      "sourceRoot": "apps/server-backend/src",
-      "projectType": "application",
-      "prefix": "server-backend",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@nrwl/node:build",
-          "options": {
-            "outputPath": "dist/apps/server-backend",
-            "main": "apps/server-backend/src/main.ts",
-            "tsConfig": "apps/server-backend/tsconfig.app.json",
-            "assets": ["apps/server-backend/src/assets"]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/server-backend/src/environments/environment.ts",
-                  "with": "apps/server-backend/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "server-backend:build"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "apps/server-backend/tsconfig.app.json",
-              "apps/server-backend/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/server-backend/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/server-backend/jest.config.js",
-            "tsConfig": "apps/server-backend/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "admin": {
       "projectType": "application",
       "root": "apps/admin",
@@ -103,7 +47,10 @@
               "apps/admin/tsconfig.app.json",
               "apps/admin/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/admin/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/admin/**/*"
+            ]
           }
         },
         "test": {
@@ -138,8 +85,13 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": ["apps/admin-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/admin-e2e/**/*"]
+            "tsConfig": [
+              "apps/admin-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/admin-e2e/**/*"
+            ]
           }
         }
       }
@@ -197,7 +149,10 @@
               "apps/client/tsconfig.app.json",
               "apps/client/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/client/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/client/**/*"
+            ]
           }
         },
         "test": {
@@ -232,8 +187,13 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": ["apps/client-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/client-e2e/**/*"]
+            "tsConfig": [
+              "apps/client-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/client-e2e/**/*"
+            ]
           }
         }
       }
@@ -251,7 +211,9 @@
             "outputPath": "dist/apps/client-electron",
             "main": "apps/client-electron/src/main.ts",
             "tsConfig": "apps/client-electron/tsconfig.app.json",
-            "assets": ["apps/client-electron/src/assets"]
+            "assets": [
+              "apps/client-electron/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -297,7 +259,10 @@
               "apps/client-electron/tsconfig.app.json",
               "apps/client-electron/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/client-electron/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/client-electron/**/*"
+            ]
           }
         },
         "test": {
@@ -324,7 +289,10 @@
               "libs/vue/tsconfig.lib.json",
               "libs/vue/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/vue/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/vue/**/*"
+            ]
           }
         },
         "test": {
@@ -405,7 +373,10 @@
               "libs/electron/tsconfig.lib.json",
               "libs/electron/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/electron/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/electron/**/*"
+            ]
           }
         },
         "test": {
@@ -463,7 +434,9 @@
             "outputPath": "dist/apps/admin-electron",
             "main": "apps/admin-electron/src/main.ts",
             "tsConfig": "apps/admin-electron/tsconfig.app.json",
-            "assets": ["apps/admin-electron/src/assets"]
+            "assets": [
+              "apps/admin-electron/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -509,7 +482,10 @@
               "apps/admin-electron/tsconfig.app.json",
               "apps/admin-electron/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/admin-electron/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/admin-electron/**/*"
+            ]
           }
         },
         "test": {
@@ -536,7 +512,10 @@
               "libs/utils/tsconfig.lib.json",
               "libs/utils/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/utils/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/utils/**/*"
+            ]
           }
         },
         "test": {
@@ -548,12 +527,72 @@
           }
         }
       }
+    },
+    "main-server": {
+      "root": "apps/main-server",
+      "sourceRoot": "apps/main-server/src",
+      "projectType": "application",
+      "prefix": "main-server",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/main-server",
+            "main": "apps/main-server/src/main.ts",
+            "tsConfig": "apps/main-server/tsconfig.app.json",
+            "assets": [
+              "apps/main-server/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/main-server/src/environments/environment.ts",
+                  "with": "apps/main-server/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "main-server:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/main-server/tsconfig.app.json",
+              "apps/main-server/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/main-server/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/main-server/jest.config.js",
+            "tsConfig": "apps/main-server/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/nest"
+    "defaultCollection": "@nrwl/node"
   },
-  "defaultProject": "server-backend",
   "schematics": {
     "@nrwl/workspace": {
       "library": {
@@ -609,5 +648,6 @@
         "linter": "eslint"
       }
     }
-  }
+  },
+  "defaultProject": "main-server"
 }
