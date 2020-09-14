@@ -1,3 +1,5 @@
+import { VueConstructor } from 'vue';
+
 const ConfirmPlugin = () => {
   const state = new Map();
   return (...args) => {
@@ -22,7 +24,7 @@ const ConfirmPlugin = () => {
 };
 
 export default {
-  install(Vue) {
+  install(Vue: VueConstructor) {
     const $vm = Vue;
     $vm.prototype.$confirm = ConfirmPlugin();
   },
