@@ -14,7 +14,7 @@ interface ClientMeta {
 
 const clients = new Map<string, ClientMeta>();
 
-server.auth((userId, token) => {
+server.auth((/* { userId, token } */) => {
   // Allow only local users until we will have a proper authentication
   return process.env.NODE_ENV === 'development';
 });
@@ -40,8 +40,11 @@ server.channel('admin', {
     // User can subscribe only to own data
     return ctx.userId === 'admin';
   },
-  load(ctx) {
-    ctx.sendBack({ type: 'admin/name', name: 'admin1' });
+  load() {
+    return {
+      type: 'users/get',
+      clients: Object.fromEntries([...clients]),
+    };
   },
 });
 
@@ -54,12 +57,11 @@ server.channel('tests', {
       name: ctx.clientId,
     };
     clients.set(ctx.clientId, payload);
-    console.log(clients);
     server.log.add(
       { type: 'users/get', clients: Object.fromEntries([...clients]) },
       { channels: ['admin'] }
     );
-    ctx.sendBack({ type: 'users/add', ...payload });
+    return { type: 'users/add', ...payload };
   },
 });
 
