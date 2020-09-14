@@ -1,27 +1,16 @@
 import Vue from 'vue';
-import { LoguxVuex, createLogux } from '@logux/vuex';
-import { badge, badgeEn, log } from '@logux/client';
-import { badgeStyles } from '@logux/client/badge/styles';
+import { createCustomLogux } from '@stract2/utils';
 
-Vue.use(LoguxVuex);
-
-const Logux = createLogux({
-  subprotocol: '1.0.0',
-  server: 'ws://localhost:31337',
-  userId: 'anonymous',
-  token: '',
-  allowDangerousProtocol: true,
-});
-
-const store = new Logux.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
-});
-
-badge(store.client, { messages: badgeEn, styles: badgeStyles });
-log(store.client);
+const store = createCustomLogux(
+  Vue,
+  { userId: 'anonymous', token: '' },
+  {
+    state: {},
+    mutations: {},
+    actions: {},
+    modules: {},
+  }
+);
 
 store.client.start();
 
