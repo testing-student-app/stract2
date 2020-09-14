@@ -1,8 +1,9 @@
 import Vue from 'vue';
-import users from './modules/users';
 import { LoguxVuex, createLogux } from '@logux/vuex';
 import { badge, badgeEn, log } from '@logux/client';
 import { badgeStyles } from '@logux/client/badge/styles';
+import fileSystem from './modules/fileSystem';
+import tests from './modules/tests';
 
 Vue.use(LoguxVuex);
 
@@ -11,7 +12,7 @@ const Logux = createLogux({
   server: 'ws://localhost:31337',
   userId: 'admin',
   token: '',
-  allowDangerousProtocol: true,
+  allowDangerousProtocol: true
 });
 
 const store = new Logux.Store({
@@ -19,8 +20,9 @@ const store = new Logux.Store({
   mutations: {},
   actions: {},
   modules: {
-    users,
-  },
+    fileSystem,
+    tests
+  }
 });
 
 badge(store.client, { messages: badgeEn, styles: badgeStyles });

@@ -31,7 +31,7 @@
           "builder": "./dist/libs/vue:dev-server",
           "options": {
             "browserTarget": "admin:build",
-            "port": 8081
+            "port": 31330
           },
           "configurations": {
             "production": {
@@ -121,7 +121,7 @@
           "builder": "./dist/libs/vue:dev-server",
           "options": {
             "browserTarget": "client:build",
-            "port": 8080
+            "port": 31331
           },
           "configurations": {
             "production": {
@@ -603,6 +603,72 @@
       },
       "root": "libs/vue-shared-plugins",
       "sourceRoot": "libs/vue-shared-plugins/src"
+    },
+    "tests-editor": {
+      "projectType": "application",
+      "root": "apps/tests-editor",
+      "sourceRoot": "apps/tests-editor/src",
+      "architect": {
+        "build": {
+          "builder": "./dist/libs/vue:browser",
+          "options": {
+            "dest": "dist/apps/tests-editor",
+            "index": "apps/tests-editor/public/index.html",
+            "main": "apps/tests-editor/src/main.ts",
+            "tsConfig": "apps/tests-editor/tsconfig.app.json",
+            "publicPath": "./"
+          },
+          "configurations": {
+            "production": {
+              "mode": "production",
+              "filenameHashing": true,
+              "productionSourceMap": true,
+              "css": {
+                "extract": true,
+                "sourceMap": false
+              }
+            },
+            "development": {
+              "mode": "development"
+            }
+          }
+        },
+        "serve": {
+          "builder": "./dist/libs/vue:dev-server",
+          "options": {
+            "browserTarget": "tests-editor:build",
+            "port": 31332
+          },
+          "configurations": {
+            "production": {
+              "mode": "production",
+              "browserTarget": "tests-editor:build:production"
+            },
+            "development": {
+              "mode": "development"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/tests-editor/tsconfig.app.json",
+              "apps/tests-editor/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/client/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/tests-editor/jest.config.js",
+            "tsConfig": "apps/tests-editor/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

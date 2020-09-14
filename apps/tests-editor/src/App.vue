@@ -2,7 +2,7 @@
   <div>
     <nav-bar />
 
-    <b-container fluid class="main py-3">
+    <b-container :fluid="true" class="main py-3">
       <router-view></router-view>
     </b-container>
   </div>
@@ -10,7 +10,6 @@
 
 <script lang='ts'>
 import Vue from 'vue';
-import { mapActions } from 'vuex';
 import NavBar from './components/NavBar.vue';
 import { loguxMixin } from '@logux/vuex';
 
@@ -18,14 +17,14 @@ export default Vue.extend({
   name: 'App',
   mixins: [loguxMixin],
   components: {
-    NavBar
+    NavBar,
   },
   computed: {
     channels() {
-      return ['admin'];
-    }
+      return ['editor'];
+    },
   },
-  methods: {}
+  methods: {},
 });
 </script>
 

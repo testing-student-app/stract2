@@ -17,7 +17,12 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
@@ -27,29 +32,39 @@
     },
     "admin-e2e": {
       "tags": [],
-      "implicitDependencies": ["admin"]
+      "implicitDependencies": [
+        "admin"
+      ]
     },
     "admin-electron": {
       "tags": [],
-      "implicitDependencies": ["admin"]
+      "implicitDependencies": [
+        "admin"
+      ]
     },
     "client": {
       "tags": []
     },
     "client-e2e": {
       "tags": [],
-      "implicitDependencies": ["client"]
+      "implicitDependencies": [
+        "client"
+      ]
     },
     "client-electron": {
       "tags": [],
-      "implicitDependencies": ["client"]
+      "implicitDependencies": [
+        "client"
+      ]
     },
     "vue": {
       "tags": []
     },
     "vue-e2e": {
       "tags": [],
-      "implicitDependencies": ["vue"]
+      "implicitDependencies": [
+        "vue"
+      ]
     },
     "electron": {
       "tags": []
@@ -64,6 +79,9 @@
       "tags": []
     },
     "vue-shared-plugins": {
+      "tags": []
+    },
+    "tests-editor": {
       "tags": []
     }
   }
