@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import serverInterlayer from './modules/serverInterlayer';
 import { LoguxVuex, createLogux } from '@logux/vuex';
 import { badge, badgeEn, log } from '@logux/client';
 import { badgeStyles } from '@logux/client/badge/styles';
@@ -18,9 +17,7 @@ const store = new Logux.Store({
   state: {},
   mutations: {},
   actions: {},
-  modules: {
-    serverInterlayer,
-  },
+  modules: {},
 });
 
 badge(store.client, { messages: badgeEn, styles: badgeStyles });

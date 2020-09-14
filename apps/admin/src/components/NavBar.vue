@@ -1,5 +1,5 @@
 <template>
-  <b-navbar variant="dark">
+  <LightNavbar>
     <ConnectedBadge :channels="['admin']" />
 
     <b-navbar-nav class="ml-auto">
@@ -20,15 +20,14 @@
         </b-dropdown>
       </b-button-toolbar>
     </b-navbar-nav>
-  </b-navbar>
+  </LightNavbar>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import { mapActions } from 'vuex';
 import NewQuestionModal from './NewQuestionModal.vue';
-import { customMapState } from '@stract2/utils';
-import { ConnectedBadge } from '@stract2/vue-shared-components';
+import { ConnectedBadge, LightNavbar } from '@stract2/vue-shared-components';
 
 export default Vue.extend({
   name: 'NavBar',
@@ -36,12 +35,7 @@ export default Vue.extend({
   components: {
     NewQuestionModal,
     ConnectedBadge,
-  },
-
-  computed: {
-    ...customMapState({
-      serverStatus: (state) => state.serverInterlayer.serverStatus,
-    }),
+    LightNavbar,
   },
 
   methods: {

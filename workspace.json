@@ -577,6 +577,32 @@
       },
       "root": "libs/vue-shared-components",
       "sourceRoot": "libs/vue-shared-components/src"
+    },
+    "vue-shared-plugins": {
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/vue-shared-plugins/tsconfig.lib.json",
+              "libs/vue-shared-plugins/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/vue-shared-plugins/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/vue-shared-plugins/jest.config.js",
+            "tsConfig": "libs/vue-shared-plugins/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "root": "libs/vue-shared-plugins",
+      "sourceRoot": "libs/vue-shared-plugins/src"
     }
   },
   "cli": {

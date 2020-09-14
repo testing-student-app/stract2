@@ -62,6 +62,9 @@
     },
     "vue-shared-components": {
       "tags": []
+    },
+    "vue-shared-plugins": {
+      "tags": []
     }
   }
 }

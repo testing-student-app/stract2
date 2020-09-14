@@ -2,15 +2,12 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import { ConfirmPlugin, createBootstrapVue } from '@stract2/vue-shared-plugins';
 
-import './plugins/bootstrap';
+createBootstrapVue(Vue);
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
-import WebSocketPlugin from './plugins/websocket';
-import ConfirmPlugin from './plugins/confirm';
-
-Vue.use(WebSocketPlugin, { store });
 Vue.use(ConfirmPlugin);
 
 Vue.config.productionTip = false;

@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import fileSystem from './modules/fileSystem';
 import tests from './modules/tests';
-import serverInterlayer from './modules/serverInterlayer';
 import users from './modules/users';
 import { LoguxVuex, createLogux } from '@logux/vuex';
 import { badge, badgeEn, log } from '@logux/client';
@@ -25,7 +24,6 @@ const store = new Logux.Store({
     users,
     fileSystem,
     tests,
-    serverInterlayer,
   },
 });
 

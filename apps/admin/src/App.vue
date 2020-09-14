@@ -11,7 +11,6 @@
 <script lang='ts'>
 import Vue from 'vue';
 import { mapActions } from 'vuex';
-import { customMapState } from '@stract2/utils';
 import NavBar from './components/NavBar.vue';
 import { loguxMixin } from '@logux/vuex';
 
@@ -21,26 +20,11 @@ export default Vue.extend({
   components: {
     NavBar,
   },
-
   computed: {
-    ...customMapState({
-      // serverLoaded: (state) => state.serverLoaded,
-      // serverPort: (state) => state.serverPort,
-    }),
     channels() {
       return ['admin'];
     },
   },
-
-  watch: {},
-
-  beforeCreate() {
-    // tauri.listen('state', ({ payload: state }) => {
-    //   const { name, payload } = state;
-    //   this.$store.dispatch(name, payload);
-    // });
-  },
-
   methods: {
     ...mapActions(['setServerStatus']),
   },

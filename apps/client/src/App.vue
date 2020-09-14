@@ -19,20 +19,10 @@ export default Vue.extend({
   components: {
     NavBar,
   },
-
   computed: {
     channels() {
       return ['tests'];
     },
-  },
-
-  watch: {},
-
-  beforeCreate() {
-    // tauri.listen('state', ({ payload: state }) => {
-    //   const { name, payload } = state;
-    //   this.$store.dispatch(name, payload);
-    // });
   },
 });
 </script>
