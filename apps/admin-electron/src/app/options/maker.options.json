@@ -1,4 +1,4 @@
 {
-  "$schema": "../../../../../libs/electron/src/validation/maker.schema.json",
+  "$schema": "../../../../../node_modules/@bananajs/nxelectron/src/validation/maker.schema.json",
   "productName": "stract2-admin"
 }

@@ -57,18 +57,6 @@
         "client"
       ]
     },
-    "vue": {
-      "tags": []
-    },
-    "vue-e2e": {
-      "tags": [],
-      "implicitDependencies": [
-        "vue"
-      ]
-    },
-    "electron": {
-      "tags": []
-    },
     "utils": {
       "tags": []
     },

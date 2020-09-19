@@ -28,7 +28,7 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "postinstall": "exitzero electron-builder install-app-deps && node libs/vue/patch-nx-dep-graph.js && nx build vue && nx build electron"
+    "postinstall": "exitzero electron-builder install-app-deps && node ./node_modules/@bananajs/nxvue/patch-nx-dep-graph.js"
   },
   "private": true,
   "dependencies": {
@@ -52,6 +52,8 @@
     "@angular-devkit/build-webpack": "^0.901.7",
     "@angular-devkit/core": "10.0.7",
     "@angular-devkit/schematics": "10.0.7",
+    "@bananajs/nxelectron": "^1.0.2",
+    "@bananajs/nxvue": "^1.0.2",
     "@nestjs/schematics": "^7.0.0",
     "@nestjs/testing": "^7.0.0",
     "@nrwl/cypress": "10.1.0",
@@ -60,7 +62,6 @@
     "@nrwl/nest": "^10.1.0",
     "@nrwl/node": "10.1.0",
     "@nrwl/workspace": "10.1.0",
-    "@nx-plus/vue": "^10.0.0",
     "@types/circular-dependency-plugin": "^5.0.1",
     "@types/copy-webpack-plugin": "^5.0.1",
     "@types/fs-extra": "^9.0.1",

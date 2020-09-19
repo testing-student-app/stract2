@@ -23,7 +23,7 @@
     "@angular-devkit/core" "10.0.8"
     rxjs "6.5.5"
 
-"@angular-devkit/architect@0.901.12":
+"@angular-devkit/architect@0.901.12", "@angular-devkit/architect@^0.901.7", "@angular-devkit/architect@~0.901.0":
   version "0.901.12"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.901.12.tgz#e0f78b7282f851d27af6802dc7a261022421b2d5"
   integrity sha512-gLlsxa+3JPV1m1gRvRMujOs4xKox6I5BkYmOD1zfu+dB6y3LuBAvHfXA6FaTDVOMBrmSlWnE4PmOmB6xd7wxMA==
@@ -71,7 +71,7 @@
     rxjs "6.5.5"
     source-map "0.7.3"
 
-"@angular-devkit/core@9.1.12":
+"@angular-devkit/core@9.1.12", "@angular-devkit/core@^9.1.7", "@angular-devkit/core@~9.1.0":
   version "9.1.12"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-9.1.12.tgz#7cebce51918fe7f3462d8c58c9fbd5a3e2c3b3e7"
   integrity sha512-D/GnBeSlmdgGn7EhuE32HuPuRAjvUuxi7Q6WywBI8PSsXKAGnrypghBwMATNnOA24//CgbW2533Y9VWHaeXdeA==
@@ -91,7 +91,7 @@
     ora "4.0.4"
     rxjs "6.5.5"
 
-"@angular-devkit/schematics@9.1.12":
+"@angular-devkit/schematics@9.1.12", "@angular-devkit/schematics@^9.1.7", "@angular-devkit/schematics@~9.1.0":
   version "9.1.12"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-9.1.12.tgz#bbf457f1b35941fddeeb1ee77336dd04ca60b8ba"
   integrity sha512-+GYnUzmIy1/QpYitCC8mI7jcrViGHTtOKvvDPEFjU2nggjNEQaMmsHcdIsjrqggEc23ZZyebNAIewT8CMkJyrQ==
@@ -949,6 +949,59 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@bananajs/nxelectron@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@bananajs/nxelectron/-/nxelectron-1.0.2.tgz#6c77df1d795b31008270c34b6c88a120bae069a4"
+  integrity sha512-4SBwNB8BAn9/GrI2n+nLY3lh8d/NBmQ8jgsKl/NXyyf0wH64mYrEAQE2iD2rLjq1hHvJGUeYuFwINOpLe5AiZw==
+  dependencies:
+    "@angular-devkit/architect" "^0.901.7"
+    "@angular-devkit/build-webpack" "^0.901.7"
+    "@angular-devkit/core" "^9.1.7"
+    "@angular-devkit/schematics" "^9.1.7"
+    "@nrwl/jest" "^9.5.1"
+    "@nrwl/linter" "^9.5.1"
+    "@nrwl/workspace" "^9.5.1"
+    circular-dependency-plugin "^5.0.2"
+    copy-webpack-plugin "^5.1.1"
+    electron-builder "^22.7.0"
+    electron-packager "^15.0.0"
+    fork-ts-checker-webpack-plugin "^5.0.6"
+    license-webpack-plugin "^2.2.0"
+    rimraf "^3.0.2"
+    source-map-support "^0.5.19"
+    strip-json-comments "^3.1.1"
+    terser-webpack-plugin "^3.0.6"
+    tree-kill "^1.2.2"
+    ts-loader "^7.0.5"
+    tsconfig-paths-webpack-plugin "3.2.0"
+    webpack "^4.43.0"
+    webpack-dev-server "^3.11.0"
+    webpack-merge "^4.2.2"
+    webpack-node-externals "1.7.2"
+
+"@bananajs/nxvue@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@bananajs/nxvue/-/nxvue-1.0.2.tgz#47d8e3c8429f2cdccab6350dd0c6f188c4c8b632"
+  integrity sha512-QD+LLIP7VEOUWaesb6zmilHw2Cd5dQGjc9y/b48dG2WVkc3jh/RRbFrs6OSr44X2LgPmCDP5EF0py9nFHIXnfA==
+  dependencies:
+    "@angular-devkit/architect" "0.1000.7"
+    "@angular-devkit/core" "10.0.7"
+    "@angular-devkit/schematics" "10.0.7"
+    "@nrwl/cypress" "^10.0.0"
+    "@nrwl/jest" "^10.0.0"
+    "@nrwl/linter" "^10.0.0"
+    "@vue/cli-shared-utils" "~4.5.0"
+    copy-webpack-plugin "^5.1.1"
+    less "^3.0.4"
+    less-loader "^5.0.0"
+    rxjs "6.5.5"
+    sass "^1.26.5"
+    sass-loader "^8.0.2"
+    stylus "^0.54.7"
+    stylus-loader "^3.0.2"
+    tsconfig-paths-webpack-plugin "3.3.0"
+    typescript "3.9.7"
+
 "@bcoe/v8-coverage@^0.2.3":
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
@@ -1432,6 +1485,17 @@
     yargs "^11.0.0"
     yargs-parser "10.0.0"
 
+"@nrwl/cli@9.7.0":
+  version "9.7.0"
+  resolved "https://registry.yarnpkg.com/@nrwl/cli/-/cli-9.7.0.tgz#440981610272157957b46238f3e74317f80dd4e3"
+  integrity sha512-YhHyIgfKwReWsdgIHzVPw2b7RZJEYR+FsiuqbIDRQwndNXp2ZyszLhQtH3se6/xuuqXX2K4IoCLdZA7sIJvNxw==
+  dependencies:
+    "@nrwl/tao" "9.7.0"
+    chalk "2.4.2"
+    tmp "0.0.33"
+    yargs "15.4.1"
+    yargs-parser "20.0.0"
+
 "@nrwl/cypress@10.1.0", "@nrwl/cypress@^10.0.0":
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/@nrwl/cypress/-/cypress-10.1.0.tgz#c448a0080ced0972d70ca097fbf9d9967c3ad49f"
@@ -1462,12 +1526,28 @@
     "@angular-devkit/core" "~10.0.0"
     "@angular-devkit/schematics" "~10.0.0"
 
+"@nrwl/jest@^9.5.1":
+  version "9.7.0"
+  resolved "https://registry.yarnpkg.com/@nrwl/jest/-/jest-9.7.0.tgz#9baa77c12f43f2d605b55dadb832b9b39d91031f"
+  integrity sha512-k0v/MXrx2Hjk9yOS6xMBqZ7RZ1/gh2le8dzQRgZ3ULideblHBvzHJnesYINALtor234O8GZIIxjbGPdcWhF75A==
+  dependencies:
+    "@angular-devkit/architect" "~0.901.0"
+    "@angular-devkit/core" "~9.1.0"
+    "@angular-devkit/schematics" "~9.1.0"
+
 "@nrwl/linter@10.1.0", "@nrwl/linter@^10.0.0":
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/@nrwl/linter/-/linter-10.1.0.tgz#59cc68bba14d09dd2707c1a68a944f62ce8b9d6b"
   integrity sha512-JePWJQhRi+lIoAu4tqQMUl+/Fq+dMVNHXUds0PuMXJZntuobP57DFLmX4fjit5zLm1Lv4qZfXtX4W2CoHK6eFQ==
   dependencies:
     "@angular-devkit/architect" "~0.1000.0"
+
+"@nrwl/linter@^9.5.1":
+  version "9.7.0"
+  resolved "https://registry.yarnpkg.com/@nrwl/linter/-/linter-9.7.0.tgz#3ae18ba976068b3842d8c11dc29f008166a14a4e"
+  integrity sha512-W+3bPtU4NBuvuo1dI695IbOwwROoN5p+t3YsruMPoBRiH0JEON+fyS93RvoINXto6b5BVZPBOooXorQGLOQ6ig==
+  dependencies:
+    "@angular-devkit/architect" "~0.901.0"
 
 "@nrwl/nest@^10.1.0":
   version "10.1.0"
@@ -1515,6 +1595,20 @@
     minimist "^1.2.0"
     strip-json-comments "2.0.1"
 
+"@nrwl/tao@9.7.0":
+  version "9.7.0"
+  resolved "https://registry.yarnpkg.com/@nrwl/tao/-/tao-9.7.0.tgz#91518f290d7d4153b04ac087a115999ab86cdd19"
+  integrity sha512-ppG2DvD26FrNniydTvsKHuJPFH3ZVSj5zkGLz+qDQPbU55wTpULBKEeSCdkHUcZySYVK9sCTTUKmQUXjXCiipQ==
+  dependencies:
+    "@angular-devkit/architect" "~0.901.0"
+    "@angular-devkit/core" "~9.1.0"
+    "@angular-devkit/schematics" "~9.1.0"
+    fast-levenshtein "2.0.6"
+    inquirer "^6.3.1"
+    minimist "^1.2.0"
+    strip-json-comments "2.0.1"
+    yargs-parser "20.0.0"
+
 "@nrwl/workspace@10.1.0":
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/@nrwl/workspace/-/workspace-10.1.0.tgz#56b955eca3a3bd230cb563116876b5e47779a675"
@@ -1538,6 +1632,29 @@
     yargs "^11.0.0"
     yargs-parser "10.0.0"
 
+"@nrwl/workspace@^9.5.1":
+  version "9.7.0"
+  resolved "https://registry.yarnpkg.com/@nrwl/workspace/-/workspace-9.7.0.tgz#7b56dbe34e54fa8c6fa89743f29966995dee26a8"
+  integrity sha512-sSlQH20X46Py68Ya4e6aFZf8GutbnF3w71koa061goKXYOtRz1hDWEq5iI+RrtfRogfswuvQeXg6xmLAsF33gg==
+  dependencies:
+    "@angular-devkit/core" "~9.1.0"
+    "@angular-devkit/schematics" "~9.1.0"
+    "@nrwl/cli" "9.7.0"
+    axios "0.19.2"
+    chalk "2.4.2"
+    cosmiconfig "4.0.0"
+    dotenv "8.2.0"
+    fs-extra "6.0.0"
+    ignore "5.0.4"
+    npm-run-all "4.1.5"
+    opn "^5.3.0"
+    rxjs "^6.5.4"
+    semver "5.4.1"
+    strip-json-comments "2.0.1"
+    tmp "0.0.33"
+    yargs "15.4.1"
+    yargs-parser "20.0.0"
+
 "@nuxt/opencollective@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@nuxt/opencollective/-/opencollective-0.3.0.tgz#11d8944dcf2d526e31660bb69570be03f8fb72b7"
@@ -1555,29 +1672,6 @@
     chalk "^2.4.1"
     consola "^2.3.0"
     node-fetch "^2.3.0"
-
-"@nx-plus/vue@^10.0.0":
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/@nx-plus/vue/-/vue-10.0.0.tgz#67afaf636f0ab0012d9d4983624431088f377a45"
-  integrity sha512-HcBM85Y59vEX9bhH6YMpSx230feyOc08bqn/P9lootnlBE4tLHV+/w2xHOcBhk8eico8vLsCg0mB0KUZfOPXbA==
-  dependencies:
-    "@angular-devkit/architect" "0.1000.7"
-    "@angular-devkit/core" "10.0.7"
-    "@angular-devkit/schematics" "10.0.7"
-    "@nrwl/cypress" "^10.0.0"
-    "@nrwl/jest" "^10.0.0"
-    "@nrwl/linter" "^10.0.0"
-    "@vue/cli-shared-utils" "~4.5.0"
-    copy-webpack-plugin "^5.1.1"
-    less "^3.0.4"
-    less-loader "^5.0.0"
-    rxjs "6.5.5"
-    sass "^1.26.5"
-    sass-loader "^8.0.2"
-    stylus "^0.54.7"
-    stylus-loader "^3.0.2"
-    tsconfig-paths-webpack-plugin "3.3.0"
-    typescript "3.9.7"
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.1"
@@ -6112,7 +6206,7 @@ fast-json-stable-stringify@2.1.0, fast-json-stable-stringify@2.x, fast-json-stab
   resolved "https://registry.yarnpkg.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"
   integrity sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==
 
-fast-levenshtein@~2.0.6:
+fast-levenshtein@2.0.6, fast-levenshtein@~2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
@@ -6407,6 +6501,23 @@ fork-ts-checker-webpack-plugin@^3.1.1:
     semver "^5.6.0"
     tapable "^1.0.0"
     worker-rpc "^0.1.0"
+
+fork-ts-checker-webpack-plugin@^5.0.6:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/fork-ts-checker-webpack-plugin/-/fork-ts-checker-webpack-plugin-5.2.0.tgz#780a14fb0da02a892baedd7aa0d089a1eda7b3e5"
+  integrity sha512-NEKcI0+osT5bBFZ1SFGzJMQETjQWZrSvMO1g0nAR/w0t328Z41eN8BJEIZyFCl2HsuiJpa9AN474Nh2qLVwGLQ==
+  dependencies:
+    "@babel/code-frame" "^7.8.3"
+    "@types/json-schema" "^7.0.5"
+    chalk "^4.1.0"
+    cosmiconfig "^6.0.0"
+    deepmerge "^4.2.2"
+    fs-extra "^9.0.0"
+    memfs "^3.1.2"
+    minimatch "^3.0.4"
+    schema-utils "2.7.0"
+    semver "^7.3.2"
+    tapable "^1.0.0"
 
 form-data@~2.3.2:
   version "2.3.3"
@@ -12819,6 +12930,17 @@ ts-loader@^6.2.2:
     micromatch "^4.0.0"
     semver "^6.0.0"
 
+ts-loader@^7.0.5:
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-7.0.5.tgz#789338fb01cb5dc0a33c54e50558b34a73c9c4c5"
+  integrity sha512-zXypEIT6k3oTc+OZNx/cqElrsbBtYqDknf48OZos0NQ3RTt045fBIU8RRSu+suObBzYB355aIPGOe/3kj9h7Ig==
+  dependencies:
+    chalk "^2.3.0"
+    enhanced-resolve "^4.0.0"
+    loader-utils "^1.0.2"
+    micromatch "^4.0.0"
+    semver "^6.0.0"
+
 ts-node@~7.0.0:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-7.0.1.tgz#9562dc2d1e6d248d24bc55f773e3f614337d9baf"
@@ -13957,6 +14079,11 @@ yargs-parser@18.x, yargs-parser@^18.1.2:
     camelcase "^5.0.0"
     decamelize "^1.2.0"
 
+yargs-parser@20.0.0:
+  version "20.0.0"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.0.0.tgz#c65a1daaa977ad63cebdd52159147b789a4e19a9"
+  integrity sha512-8eblPHTL7ZWRkyjIZJjnGf+TijiKJSwA24svzLRVvtgoi/RZiKa9fFQTrlx0OKLnyHSdt/enrdadji6WFfESVA==
+
 yargs-parser@^11.1.1:
   version "11.1.1"
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-11.1.1.tgz#879a0865973bca9f6bab5cbdf3b1c67ec7d3bcf4"
@@ -14003,6 +14130,23 @@ yargs@12.0.5:
     y18n "^3.2.1 || ^4.0.0"
     yargs-parser "^11.1.1"
 
+yargs@15.4.1, yargs@^15.0.0, yargs@^15.3.1, yargs@^15.4.1:
+  version "15.4.1"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-15.4.1.tgz#0d87a16de01aee9d8bec2bfbf74f67851730f4f8"
+  integrity sha512-aePbxDmcYW++PaqBsJ+HYUFwCdv4LVvdnhBy78E57PIor8/OVvhMrADFFEDh8DHDFRv/O9i3lPhsENjO7QX0+A==
+  dependencies:
+    cliui "^6.0.0"
+    decamelize "^1.2.0"
+    find-up "^4.1.0"
+    get-caller-file "^2.0.1"
+    require-directory "^2.1.1"
+    require-main-filename "^2.0.0"
+    set-blocking "^2.0.0"
+    string-width "^4.2.0"
+    which-module "^2.0.0"
+    y18n "^4.0.0"
+    yargs-parser "^18.1.2"
+
 yargs@^11.0.0:
   version "11.1.1"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-11.1.1.tgz#5052efe3446a4df5ed669c995886cc0f13702766"
@@ -14036,23 +14180,6 @@ yargs@^13.3.0, yargs@^13.3.2:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^13.1.2"
-
-yargs@^15.0.0, yargs@^15.3.1, yargs@^15.4.1:
-  version "15.4.1"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-15.4.1.tgz#0d87a16de01aee9d8bec2bfbf74f67851730f4f8"
-  integrity sha512-aePbxDmcYW++PaqBsJ+HYUFwCdv4LVvdnhBy78E57PIor8/OVvhMrADFFEDh8DHDFRv/O9i3lPhsENjO7QX0+A==
-  dependencies:
-    cliui "^6.0.0"
-    decamelize "^1.2.0"
-    find-up "^4.1.0"
-    get-caller-file "^2.0.1"
-    require-directory "^2.1.1"
-    require-main-filename "^2.0.0"
-    set-blocking "^2.0.0"
-    string-width "^4.2.0"
-    which-module "^2.0.0"
-    y18n "^4.0.0"
-    yargs-parser "^18.1.2"
 
 yauzl@^2.10.0:
   version "2.10.0"
