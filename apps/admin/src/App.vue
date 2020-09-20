@@ -10,7 +10,6 @@
 
 <script lang='ts'>
 import Vue from 'vue';
-import { mapActions } from 'vuex';
 import NavBar from './components/NavBar.vue';
 import { loguxMixin } from '@logux/vuex';
 
@@ -18,14 +17,14 @@ export default Vue.extend({
   name: 'App',
   mixins: [loguxMixin],
   components: {
-    NavBar
+    NavBar,
   },
   computed: {
     channels() {
       return ['admin'];
-    }
+    },
   },
-  methods: {}
+  methods: {},
 });
 </script>
 
