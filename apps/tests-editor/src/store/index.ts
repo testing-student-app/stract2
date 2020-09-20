@@ -12,7 +12,7 @@ const Logux = createLogux({
   server: 'ws://localhost:31337',
   userId: 'admin',
   token: '',
-  allowDangerousProtocol: true
+  allowDangerousProtocol: true,
 });
 
 const store = new Logux.Store({
@@ -21,8 +21,8 @@ const store = new Logux.Store({
   actions: {},
   modules: {
     fileSystem,
-    tests
-  }
+    tests,
+  },
 });
 
 badge(store.client, { messages: badgeEn, styles: badgeStyles });

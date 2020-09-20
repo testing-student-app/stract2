@@ -12,7 +12,12 @@ interface ClientMeta {
   name: string;
 }
 
+interface Test {
+  name: string;
+}
+
 const clients = new Map<string, ClientMeta>();
+const tests = new Map<string, Test>();
 
 server.auth((/* { userId, token } */) => {
   // Allow only local users until we will have a proper authentication
@@ -62,6 +67,19 @@ server.channel('tests', {
       { channels: ['admin'] }
     );
     return { type: 'users/add', ...payload };
+  },
+});
+
+server.channel('editor', {
+  access(ctx) {
+    // User can subscribe only to own data
+    return ctx.userId === 'admin';
+  },
+  load() {
+    return {
+      type: 'tests/get',
+      tests: Object.fromEntries([...tests]),
+    };
   },
 });
 
