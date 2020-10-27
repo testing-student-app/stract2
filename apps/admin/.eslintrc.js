@@ -1,4 +1,10 @@
 module.exports = {
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "project": "apps/admin/tsconfig.app.json",
+    createDefaultProgram: true,
+  },
   rules: {},
   extends: [
     '../../.eslintrc',

@@ -8,14 +8,20 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2019",
     "module": "esnext",
     "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
+    "lib": ["es2019", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@stract2/utils": ["libs/utils/src/index.ts"],
+      "@stract2/vue-shared-components": [
+        "libs/vue-shared-components/src/index.ts"
+      ],
+      "@stract2/vue-shared-plugins": ["libs/vue-shared-plugins/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

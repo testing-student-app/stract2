@@ -1,74 +1,19 @@
 {
   "version": 1,
   "projects": {
-    "server-backend": {
-      "root": "apps/server-backend",
-      "sourceRoot": "apps/server-backend/src",
-      "projectType": "application",
-      "prefix": "server-backend",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@nrwl/node:build",
-          "options": {
-            "outputPath": "dist/apps/server-backend",
-            "main": "apps/server-backend/src/main.ts",
-            "tsConfig": "apps/server-backend/tsconfig.app.json",
-            "assets": ["apps/server-backend/src/assets"]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/server-backend/src/environments/environment.ts",
-                  "with": "apps/server-backend/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "server-backend:build"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "apps/server-backend/tsconfig.app.json",
-              "apps/server-backend/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/server-backend/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/server-backend/jest.config.js",
-            "tsConfig": "apps/server-backend/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "admin": {
       "projectType": "application",
       "root": "apps/admin",
       "sourceRoot": "apps/admin/src",
       "architect": {
         "build": {
-          "builder": "@nx-plus/vue:browser",
+          "builder": "@bananajs/nxvue:browser",
           "options": {
             "dest": "dist/apps/admin",
             "index": "apps/admin/public/index.html",
             "main": "apps/admin/src/main.ts",
-            "tsConfig": "apps/admin/tsconfig.app.json"
+            "tsConfig": "apps/admin/tsconfig.app.json",
+            "publicPath": "./"
           },
           "configurations": {
             "production": {
@@ -83,9 +28,10 @@
           }
         },
         "serve": {
-          "builder": "@nx-plus/vue:dev-server",
+          "builder": "@bananajs/nxvue:dev-server",
           "options": {
-            "browserTarget": "admin:build"
+            "browserTarget": "admin:build",
+            "port": 31330
           },
           "configurations": {
             "production": {
@@ -101,7 +47,10 @@
               "apps/admin/tsconfig.app.json",
               "apps/admin/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/admin/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/admin/**/*"
+            ]
           }
         },
         "test": {
@@ -136,8 +85,13 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": ["apps/admin-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/admin-e2e/**/*"]
+            "tsConfig": [
+              "apps/admin-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/admin-e2e/**/*"
+            ]
           }
         }
       }
@@ -148,7 +102,7 @@
       "sourceRoot": "apps/client/src",
       "architect": {
         "build": {
-          "builder": "@nx-plus/vue:browser",
+          "builder": "@bananajs/nxvue:browser",
           "options": {
             "dest": "dist/apps/client",
             "index": "apps/client/public/index.html",
@@ -172,10 +126,10 @@
           }
         },
         "serve": {
-          "builder": "@nx-plus/vue:dev-server",
+          "builder": "@bananajs/nxvue:dev-server",
           "options": {
             "browserTarget": "client:build",
-            "publicPath": "./"
+            "port": 31331
           },
           "configurations": {
             "production": {
@@ -195,7 +149,10 @@
               "apps/client/tsconfig.app.json",
               "apps/client/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/client/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/client/**/*"
+            ]
           }
         },
         "test": {
@@ -230,8 +187,13 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": ["apps/client-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/client-e2e/**/*"]
+            "tsConfig": [
+              "apps/client-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/client-e2e/**/*"
+            ]
           }
         }
       }
@@ -244,12 +206,14 @@
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "nx-electron:build",
+          "builder": "@bananajs/nxelectron:build",
           "options": {
             "outputPath": "dist/apps/client-electron",
             "main": "apps/client-electron/src/main.ts",
             "tsConfig": "apps/client-electron/tsconfig.app.json",
-            "assets": ["apps/client-electron/src/assets"]
+            "assets": [
+              "apps/client-electron/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -266,13 +230,13 @@
           }
         },
         "serve": {
-          "builder": "nx-electron:execute",
+          "builder": "@bananajs/nxelectron:execute",
           "options": {
             "buildTarget": "client-electron:build"
           }
         },
         "package": {
-          "builder": "nx-electron:package",
+          "builder": "@bananajs/nxelectron:package",
           "options": {
             "name": "client-electron",
             "frontendProject": "client",
@@ -280,7 +244,7 @@
           }
         },
         "make": {
-          "builder": "nx-electron:make",
+          "builder": "@bananajs/nxelectron:make",
           "options": {
             "name": "client-electron",
             "frontendProject": "client",
@@ -295,7 +259,10 @@
               "apps/client-electron/tsconfig.app.json",
               "apps/client-electron/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/client-electron/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/client-electron/**/*"
+            ]
           }
         },
         "test": {
@@ -307,10 +274,361 @@
           }
         }
       }
+    },
+    "admin-electron": {
+      "root": "apps/admin-electron",
+      "sourceRoot": "apps/admin-electron/src",
+      "projectType": "application",
+      "prefix": "admin-electron",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@bananajs/nxelectron:build",
+          "options": {
+            "outputPath": "dist/apps/admin-electron",
+            "main": "apps/admin-electron/src/main.ts",
+            "tsConfig": "apps/admin-electron/tsconfig.app.json",
+            "assets": [
+              "apps/admin-electron/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/admin-electron/src/environments/environment.ts",
+                  "with": "apps/admin-electron/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@bananajs/nxelectron:execute",
+          "options": {
+            "buildTarget": "admin-electron:build"
+          }
+        },
+        "package": {
+          "builder": "@bananajs/nxelectron:package",
+          "options": {
+            "name": "admin-electron",
+            "frontendProject": "admin",
+            "out": "dist/packages"
+          }
+        },
+        "make": {
+          "builder": "@bananajs/nxelectron:make",
+          "options": {
+            "name": "admin-electron",
+            "frontendProject": "admin",
+            "out": "dist/executables"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/admin-electron/tsconfig.app.json",
+              "apps/admin-electron/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/admin-electron/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/admin-electron/jest.config.js",
+            "tsConfig": "apps/admin-electron/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "tests-editor": {
+      "projectType": "application",
+      "root": "apps/tests-editor",
+      "sourceRoot": "apps/tests-editor/src",
+      "architect": {
+        "build": {
+          "builder": "@bananajs/nxvue:browser",
+          "options": {
+            "dest": "dist/apps/tests-editor",
+            "index": "apps/tests-editor/public/index.html",
+            "main": "apps/tests-editor/src/main.ts",
+            "tsConfig": "apps/tests-editor/tsconfig.app.json",
+            "publicPath": "./"
+          },
+          "configurations": {
+            "production": {
+              "mode": "production",
+              "filenameHashing": true,
+              "productionSourceMap": true,
+              "css": {
+                "extract": true,
+                "sourceMap": false
+              }
+            },
+            "development": {
+              "mode": "development"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@bananajs/nxvue:dev-server",
+          "options": {
+            "browserTarget": "tests-editor:build",
+            "port": 31332
+          },
+          "configurations": {
+            "production": {
+              "mode": "production",
+              "browserTarget": "tests-editor:build:production"
+            },
+            "development": {
+              "mode": "development"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/tests-editor/tsconfig.app.json",
+              "apps/tests-editor/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/client/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/tests-editor/jest.config.js",
+            "tsConfig": "apps/tests-editor/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "main-server": {
+      "root": "apps/main-server",
+      "sourceRoot": "apps/main-server/src",
+      "projectType": "application",
+      "prefix": "main-server",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/main-server",
+            "main": "apps/main-server/src/main.ts",
+            "tsConfig": "apps/main-server/tsconfig.app.json",
+            "assets": [
+              "apps/main-server/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/main-server/src/environments/environment.ts",
+                  "with": "apps/main-server/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "main-server:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/main-server/tsconfig.app.json",
+              "apps/main-server/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/main-server/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/main-server/jest.config.js",
+            "tsConfig": "apps/main-server/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "utils": {
+      "root": "libs/utils",
+      "sourceRoot": "libs/utils/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/utils/tsconfig.lib.json",
+              "libs/utils/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/utils/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/utils/jest.config.js",
+            "tsConfig": "libs/utils/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "vue-shared-components": {
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/vue-shared-components/tsconfig.lib.json",
+              "libs/vue-shared-components/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/vue-shared-components/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/vue-shared-components/jest.config.js",
+            "tsConfig": "libs/vue-shared-components/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "root": "libs/vue-shared-components",
+      "sourceRoot": "libs/vue-shared-components/src"
+    },
+    "vue-shared-plugins": {
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/vue-shared-plugins/tsconfig.lib.json",
+              "libs/vue-shared-plugins/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/vue-shared-plugins/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/vue-shared-plugins/jest.config.js",
+            "tsConfig": "libs/vue-shared-plugins/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "root": "libs/vue-shared-plugins",
+      "sourceRoot": "libs/vue-shared-plugins/src"
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/nest"
+    "defaultCollection": "@nrwl/node"
   },
-  "defaultProject": "server-backend"
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/react": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/web": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nx-plugin": {
+      "plugin": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "main-server"
 }

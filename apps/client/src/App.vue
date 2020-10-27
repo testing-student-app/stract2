@@ -1,44 +1,30 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
-    {{ a }}
+  <div>
+    <nav-bar />
+
+    <b-container :fluid="true" class="main py-3">
+      <router-view></router-view>
+    </b-container>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import NavBar from './components/NavBar.vue';
+import { loguxMixin } from '@logux/vuex';
 
-const VueComponent = Vue.extend({
-  data() {
-    return {};
-  },
+export default Vue.extend({
+  name: 'App',
+  mixins: [loguxMixin],
   components: {
-    HelloWorld,
+    NavBar,
   },
   computed: {
-    b(): string {
-      this;
-      return '123';
-    },
-  },
-  methods: {
-    a(this: App): string {
-      return this.b;
+    channels() {
+      return ['tests'];
     },
   },
 });
-export default class App extends VueComponent {}
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="scss"></style>
