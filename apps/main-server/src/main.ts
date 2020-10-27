@@ -12,12 +12,24 @@ interface ClientMeta {
   name: string;
 }
 
-interface Test {
-  name: string;
+interface Answer {
+  isCorrect: boolean;
+  value: string;
+}
+
+interface Question {
+  answers: Answer[];
+  value: string;
+}
+
+interface QuestionKey {
+  clientId: string;
+  testId: string;
+  index: number;
 }
 
 const clients = new Map<string, ClientMeta>();
-const tests = new Map<string, Test>();
+const tests = new Map<QuestionKey, Question>();
 
 server.auth((/* { userId, token } */) => {
   // Allow only local users until we will have a proper authentication
