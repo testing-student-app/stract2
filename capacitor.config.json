@@ -1,0 +1,13 @@
+{
+  "appId": "xyz.TestingStudentApp.stract2",
+  "appName": "stract2",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "dist/apps/client",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

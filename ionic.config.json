@@ -1,0 +1,8 @@
+{
+  "name": "stract2",
+  "id": "xyz.TestingStudentApp.stract2",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
