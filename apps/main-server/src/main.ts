@@ -1,4 +1,5 @@
 import { Server } from '@logux/server';
+import { nanoid } from 'nanoid';
 
 const server = new Server(
   Server.loadOptions(process, {
@@ -28,8 +29,20 @@ interface QuestionKey {
   index: number;
 }
 
-const clients = new Map<string, ClientMeta>();
-const tests = new Map<QuestionKey, Question>();
+type Tests = Map<QuestionKey, Question>;
+type Clients = Map<string, ClientMeta>;
+type RoomState = 'cold_start' | 'running' | 'stopped' | 'gone';
+
+interface Room {
+  key: string;
+  clients: Clients;
+  runningTests: Tests;
+  state: RoomState;
+}
+
+const clients: Clients = new Map<string, ClientMeta>();
+const tests: Tests = new Map<QuestionKey, Question>();
+let rooms: Room[] = [];
 
 server.auth((/* { userId, token } */) => {
   // Allow only local users until we will have a proper authentication
@@ -49,6 +62,101 @@ server.type('users/change_name', {
         { channels: ['admin'] }
       );
     }
+  },
+});
+
+server.type('room/create', {
+  access(ctx) {
+    return ctx.userId === 'admin';
+  },
+  process() {
+    const room: Room = {
+      key: nanoid(),
+      clients,
+      runningTests: tests,
+      state: 'cold_start',
+    };
+    server.log.add({ type: 'room/created', room }, { channels: ['admin'] });
+  },
+});
+
+server.type('room/run', {
+  access(ctx, action) {
+    return ctx.userId === 'admin' && rooms.some((r) => r.key === action.key);
+  },
+  process(_, action) {
+    const room = rooms.find((r) => r.key === action.key);
+    const index = rooms.findIndex((r) => r.key === action.key);
+    const newRoom: Room = {
+      ...room,
+      state: 'running',
+    };
+
+    const roomsShallowCopy = [...rooms];
+    roomsShallowCopy[index] = newRoom;
+    rooms = roomsShallowCopy;
+
+    server.log.add(
+      { type: 'room/running', roomKey: newRoom.key },
+      { channels: ['tests'] }
+    );
+  },
+});
+
+server.type('room/finish', {
+  access(ctx, action) {
+    return ctx.userId === 'admin' && rooms.some((r) => r.key === action.key);
+  },
+  process(_, action) {
+    const room = rooms.find((r) => r.key === action.key);
+    const index = rooms.findIndex((r) => r.key === action.key);
+    const newRoom: Room = {
+      ...room,
+      state: 'stopped',
+    };
+
+    const roomsShallowCopy = [...rooms];
+    roomsShallowCopy[index] = newRoom;
+    rooms = roomsShallowCopy;
+
+    server.log.add(
+      { type: 'room/finished', room: newRoom },
+      { channels: ['admin'] }
+    );
+  },
+});
+
+server.type('room/delete', {
+  access(ctx, action) {
+    return ctx.userId === 'admin' && rooms.some((r) => r.key === action.key);
+  },
+  process(_, action) {
+    const room = rooms.find((r) => r.key === action.key);
+    const index = rooms.findIndex((r) => r.key === action.key);
+    const newRoom: Room = {
+      ...room,
+      state: 'gone',
+    };
+
+    const roomsShallowCopy = [...rooms];
+    roomsShallowCopy[index] = newRoom;
+    rooms = roomsShallowCopy;
+
+    server.log.add({ type: 'room/deleted', rooms }, { channels: ['admin'] });
+  },
+});
+
+server.type('users/roomFinish', {
+  access(ctx, action) {
+    return clients.has(ctx.clientId) && rooms.some((r) => r.key === action.key);
+  },
+  process(ctx, action) {
+    const client = clients.get(ctx.clientId);
+    const room = rooms.find((r) => r.key === action.key);
+    server.log.add(
+      { type: 'room/userFinished', roomKey: room.key, client },
+      { channels: ['admin'] }
+    );
   },
 });
 
@@ -79,6 +187,19 @@ server.channel('tests', {
       { channels: ['admin'] }
     );
     return { type: 'users/add', ...payload };
+  },
+});
+
+server.channel('room/:key', {
+  access({ params }: { params: { key: string } }) {
+    return rooms.some((r) => r.key === params.key);
+  },
+  async load({ params }) {
+    const { runningTests } = rooms.find((r) => r.key === params.key);
+    return {
+      type: 'room/currentRunningTest',
+      runningTests: Object.fromEntries([...runningTests]),
+    };
   },
 });
 
